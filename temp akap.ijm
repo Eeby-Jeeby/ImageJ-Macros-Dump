@@ -58,12 +58,25 @@ print(czi_list.length + " AKAP11 images were detected for analysis" + " and " + 
 			run("Create Selection");
 			run("Add to Manager");
 			selectWindow(title_1);
+			run("Brightness/Contrast...");
+			setMinAndMax(60, 255);
+			run("Apply LUT");
+			//run("Make Binary");
+			//run("Invert LUTs");
+			
 			roiManager("select", i);
 			
+			run("Set Measurements...", "mean min standard limit display");
 			run("Measure");
+			/*
 			selectWindow(title);
+			run("Brightness/Contrast...");
+			setMinAndMax(39, 255);
+			run("Apply LUT");
+			//run("Make Binary");
+			//run("Invert LUTs");
 			roiManager("select", i);
-			run("Measure");
+			run("Measure");*/
 			/*
 			//DAPI
 			selectWindow("C2-"+ title_without_file_extension + ".tif");
@@ -77,7 +90,7 @@ print(czi_list.length + " AKAP11 images were detected for analysis" + " and " + 
   }
 roiManager("deselect");
 roiManager("delete");
-run("Close All");
+//run("Close All");
 print(" ");
 print("Done!");
 print("You can find your processed images in the folder " + original_dir);
